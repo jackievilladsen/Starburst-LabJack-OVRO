@@ -550,19 +550,19 @@ class AntennaLJ(StarburstLJ):
         ljm.eWriteName(self.handle, "CIO2", 0)
         ljm.eWriteName(self.handle, "CIO3", 0)
     def __VQAttenLatch(self, newVal):
-        ljm.eWriteName(self.handle, "CIO0", 1)
+        ljm.eWriteName(self.handle, "CIO1", 1)
         self.__turnOffAllLatches()
         self.allAtt["VQ"] = newVal
     def __VIAttenLatch(self, newVal):
-        ljm.eWriteName(self.handle, "CIO1", 1)
+        ljm.eWriteName(self.handle, "CIO0", 1)
         self.__turnOffAllLatches()
         self.allAtt["VI"] = newVal
     def __HQAttenLatch(self, newVal):
-        ljm.eWriteName(self.handle, "CIO2", 1)
+        ljm.eWriteName(self.handle, "CIO3", 1)
         self.__turnOffAllLatches()
         self.allAtt["HQ"] = newVal
     def __HIAttenLatch(self, newVal):
-        ljm.eWriteName(self.handle, "CIO3", 1)
+        ljm.eWriteName(self.handle, "CIO2", 1)
         self.__turnOffAllLatches()
         self.allAtt["HI"] = newVal
 
@@ -578,35 +578,35 @@ class AntennaLJ(StarburstLJ):
     # are not error checked.
         
     def __getVQPow(self):
-        pow = ljm.eReadName(self.handle, "AIN3")
-        pow = 24 - 40 * pow
-        return pow
-    def __getVIPow(self):
-        pow = ljm.eReadName(self.handle, "AIN2")
-        pow = 24 - 40 * pow
-        return pow
-    def __getHQPow(self):
         pow = ljm.eReadName(self.handle, "AIN1")
         pow = 24 - 40 * pow
         return pow
-    def __getHIPow(self):
+    def __getVIPow(self):
         pow = ljm.eReadName(self.handle, "AIN0")
         pow = 24 - 40 * pow
         return pow
+    def __getHQPow(self):
+        pow = ljm.eReadName(self.handle, "AIN3")
+        pow = 24 - 40 * pow
+        return pow
+    def __getHIPow(self):
+        pow = ljm.eReadName(self.handle, "AIN2")
+        pow = 24 - 40 * pow
+        return pow
     def __getVQTemp(self):
-        temp = ljm.eReadName(self.handle, "AIN13")
-        temp = 478 * temp - 267
-        return temp
-    def __getVITemp(self):
-        temp = ljm.eReadName(self.handle, "AIN12")
-        temp = 478 * temp - 267
-        return temp
-    def __getHQTemp(self):
         temp = ljm.eReadName(self.handle, "AIN11")
         temp = 478 * temp - 267
         return temp
-    def __getHITemp(self):
+    def __getVITemp(self):
         temp = ljm.eReadName(self.handle, "AIN10")
+        temp = 478 * temp - 267
+        return temp
+    def __getHQTemp(self):
+        temp = ljm.eReadName(self.handle, "AIN13")
+        temp = 478 * temp - 267
+        return temp
+    def __getHITemp(self):
+        temp = ljm.eReadName(self.handle, "AIN12")
         temp = 478 * temp - 267
         return temp
     def __getVQAtt(self):
