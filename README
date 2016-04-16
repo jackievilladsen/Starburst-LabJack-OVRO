@@ -1,0 +1,11 @@
+
+https://github.com/jackievilladsen/Starburst-LabJack-OVRO.git
+
+This git repository includes two python packages, sblj and gen,
+for working with the LabJacks in the
+Starburst system at Owens Valley Radio Observatory.  sblj is a
+python wrapper for the Starburst LabJacks, working with each LabJack
+as an object with properties specific to its role in the system
+(LO/Noise Module or downconverter module).  gen is a module for
+collecting and formatting the monitor data from the LabJacks to
+provide to the ACC (the OVSA's Array Control Computer) in xml format.
